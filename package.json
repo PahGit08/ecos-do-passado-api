@@ -16,5 +16,8 @@
     "url": "https://github.com/PahGit08/ecos-do-passado-api/issues"
   },
   "homepage": "https://github.com/PahGit08/ecos-do-passado-api#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
