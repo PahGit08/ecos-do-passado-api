@@ -7,10 +7,10 @@ const service = new UserService(userRepository);
 module.exports = {
     createUser: async (request, response) =>{
         try {
-            const { name } = request.body;
+            const { name, email, password } = request.body;
 
             const user = await service.create({
-                name
+                name, email, password,
             })
 
             return response.json(user)

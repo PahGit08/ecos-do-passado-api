@@ -11,6 +11,16 @@ module.exports = new EntitySchema({
         },
         name: {
             type: 'varchar'
+        },
+        email: {
+            type: 'varchar'
+        },
+        createdAt: {
+            type: "datetime",
+            createDate: true
+        },
+        password: {
+            type: 'varchar'
         }
     }
 })
