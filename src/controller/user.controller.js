@@ -4,6 +4,7 @@ const { AppDataSource } = require("../config/data-source");
 const userRepository = AppDataSource.getRepository("User");
 const service = new UserService(userRepository);
 
+
 module.exports = {
     createUser: async (request, response) =>{
         try {
@@ -17,7 +18,9 @@ module.exports = {
         } catch (error) {
             return response.status(500).json({ message: error.message });
         } 
-    }
+    },
+    login: async (request, response) => {
 
+    }
     
 }

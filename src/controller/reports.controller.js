@@ -1,23 +1,34 @@
-const UserService = require("../services/user.service");
+const ReportService = require("../services/report.service");
 const { AppDataSource } = require("../config/data-source");
 
-const userRepository = AppDataSource.getRepository("User");
-const service = new UserService(userRepository);
+const reportsRepository = AppDataSource.getRepository("Report");
+const service = new ReportService(reportsRepository);
 
 module.exports = {
-    createUser: async (request, response) =>{
+    createReport: async (request, response) => {
         try {
-            const { reportId, title, createdAt } = request.body;
+            const { title, content, description } = request.body;
 
-            const user = await service.create({
-                reportId, title, createdAt,
+            const reports = await service.create({
+                title, content, description
             })
 
-            return response.json(user)
+            return response.json(reports)
         } catch (error) {
             return response.status(500).json({ message: error.message });
-        } 
+        }
+    },
+
+    getReports: async (request, response) => {
+        try {
+            const reports = await service.list()
+
+            return response.json(reports)
+        } catch (error) {
+            return response.status(500).json({ message: error.message });
+        }
+
     }
 
-    
+
 }

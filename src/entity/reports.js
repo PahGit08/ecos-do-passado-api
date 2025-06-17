@@ -16,9 +16,15 @@ module.exports = new EntitySchema({
             type: "datetime",
             createDate: true
         },
+        content: {
+            type:"varchar"
+        },
+        description: {
+            type:"varchar"
+        }
     },
     relations: {
-        users: {
+        createdBy: {
             target: 'User',
             type: "one-to-many",
             inverseSide: 'createdBy'

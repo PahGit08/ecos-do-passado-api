@@ -22,5 +22,12 @@ module.exports = new EntitySchema({
         password: {
             type: 'varchar'
         }
+    },
+    relations: {
+        reports: {
+            target: 'Reports',
+            type: "many-to-one",
+            inverseSide: 'createdBy'
+        }
     }
 })
