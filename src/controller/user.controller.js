@@ -6,7 +6,7 @@ const service = new UserService(userRepository);
 
 
 module.exports = {
-    createUser: async (request, response) =>{
+    createUser: async (request, response) => {
         try {
             const { name, email, password } = request.body;
 
@@ -17,10 +17,21 @@ module.exports = {
             return response.json(user)
         } catch (error) {
             return response.status(500).json({ message: error.message });
-        } 
+        }
     },
     login: async (request, response) => {
+        try {
+            const { email, password } = request.body;
 
+            const loginUser = await userRepo.findOneBy({
+                email, password
+            })
+
+            if (!loginUser) {
+                return response.status(401).json({ message: "Invalid credentials" });
+            }
+        } catch (error) {
+            return response.status(500).json({ message: error.message });
+        }
     }
-    
 }
