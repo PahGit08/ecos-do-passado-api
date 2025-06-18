@@ -26,7 +26,7 @@ module.exports = new EntitySchema({
     relations: {
         reports: {
             target: 'Reports',
-            type: "many-to-one",
+            type: "one-to-Many",
             inverseSide: 'createdBy'
         }
     }

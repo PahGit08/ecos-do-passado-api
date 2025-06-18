@@ -17,17 +17,18 @@ module.exports = new EntitySchema({
             createDate: true
         },
         content: {
-            type:"varchar"
+            type: "varchar"
         },
         description: {
-            type:"varchar"
+            type: "varchar"
         }
     },
     relations: {
         createdBy: {
             target: 'User',
-            type: "one-to-many",
-            inverseSide: 'createdBy'
+            type: "many-to-one",
+            joinColumn: true,
+            onDelete: "SET NULL",
         }
     }
 })

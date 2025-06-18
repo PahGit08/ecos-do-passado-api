@@ -23,13 +23,17 @@ module.exports = {
         try {
             const { email, password } = request.body;
 
-            const loginUser = await userRepo.findOneBy({
-                email, password
-            })
+            console.log({ email, password })
 
-            if (!loginUser) {
+            const userData = await service.getUserByEmailAndPassword(
+                email, password
+            )
+
+            if (!userData) {
                 return response.status(401).json({ message: "Invalid credentials" });
             }
+
+            return response.json(userData)
         } catch (error) {
             return response.status(500).json({ message: error.message });
         }
